@@ -6,7 +6,7 @@
 
 Lo primero que haremos, será lanzar un NMAP para ver qué puertos tiene abiertos la máquina:
 
-![POS1]()
+![POS1](img/POS1.png)
 
 Como se observa en la imagen anterior, existen varios servicios que nos pueden interesar:
 
@@ -26,7 +26,7 @@ Las opciones que configuraremos en este caso, serán:
 
 Después de configurar todo, escribiremos "run" y ejecutaremos el módulo.
 
-![POS2]()
+![POS2](img/POS2.png)
 
 Como se observa en la imagen anterior, hemos conseguido unas credenciales de acceso: postgres:password
 
@@ -42,7 +42,7 @@ Las opciones que configuraremos en este caso, serán:
 
 Después de configurar todo, escribiremos "run" y ejecutaremos el módulo.
 
-![POS3]()
+![POS3](img/POS3.png)
 
 Como vemos en la imagen anterior, el servidor nos ha devuelto la versión de PostgreSQL que está utilizando.
 
@@ -56,7 +56,7 @@ Las opciones que configuraremos en este caso, serán:
 
 Después de configurar todo, escribiremos "run" y ejecutaremos el módulo.
 
-![POS4]()
+![POS4](img/POS4.png)
 
 El módulo ha encontrado 6 usuarios con sus respectivos hashes.
 
@@ -77,13 +77,13 @@ Las opciones que configuraremos en este caso, serán:
 
 Después de configurar todo, escribiremos "run" y ejecutaremos el módulo.
 
-![POS5]()
+![POS5](img/POS5.png)
 
 # Post explotación: Puerto 5432
 
 A continuación, vamos a upgradear la shell que hemos recibido utilizando un módulo de post explotación de Metasploit llamado: post/multi/manage/shell_to_meterpreter.
 
-![POS6]()
+![POS6](img/POS6.png)
 
 Bien, ahora que tenemos una Meterpreter creada, vamos a utilizar "linpeas.sh" para sacar más información sobre la máquina objetivo.
 
@@ -97,19 +97,19 @@ Indagando en la salida obtenida por "linpeas.sh", nos encontraremos con dos fich
 
 /home/dark/credentials.txt:
 
-![POS7]()
+![POS7](img/POS7.png)
 
 Si le hacemos un "cat" al fichero mencionado anteriormente, encontraremos unas credenciales en claro:
 
-![POS9]()
+![POS9](img/POS9.png)
 
 config.php:
 
-![POS8]()
+![POS8](img/POS8.png)
 
 Si le hacemos un "cat" al fichero mencionado anteriormente, encontraremos unas credenciales en claro:
 
-![POS10]()
+![POS10](img/POS10.png)
 
 # Post explotación: Puerto 22
 
@@ -117,7 +117,7 @@ Ahora vamos a intentar acceder por SSH utilizando las credenciales de los dos us
 
 ## Usuario: Dark
 
-![POS11]()
+![POS11](img/POS11.png)
 
 Como observamos en la imagen anterior, no podemos acceder como el usuario "dark" utilizando las credenciales que nos encontramos, por lo tanto, es un "Rabbit Hole".
 
@@ -125,19 +125,19 @@ Como observamos en la imagen anterior, no podemos acceder como el usuario "dark"
 
 Sin embargo, introduciendo las credenciales de esta usuaria en el SSH, conseguimos acceder al sistema.
 
-![POS12]()
+![POS12](img/POS12.png)
 
 # Flag user.txt
 
 Para encontrar la bandera, bastará con hacer un "ls" en el directorio "/home" de alison y con un "cat", lograremos verla.
 
-![POS13]()
+![POS13](img/POS13.png)
 
 # Flag root.txt
 
 Para encontrar, la bandera primero intentaremos escalar privilegios. Para ello, usaremos el comando "sudo -l" para ver qué comandos puede ejecutar alison como administradora.
 
-![POS14]()
+![POS14](img/POS14.png)
 
 Como se observa en la imagen anterior, alison puede ejecutar todos los comandos del sistema como usuaria administradora.
 
@@ -147,6 +147,6 @@ Una vez dentro, accedemos al directorio "/root", listamos el contenido del direc
 
 Hacemos un "cat" y ya tendremos la flag de root.
 
-![POS15]()
+![POS15](img/POS15.png)
 
 
